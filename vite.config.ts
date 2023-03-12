@@ -2,6 +2,7 @@ import path from "node:path";
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import webExtension from "vite-plugin-web-extension";
+import { viteStaticCopy } from "vite-plugin-static-copy";
 
 // https://vitejs.dev/config/
 // https://vite-plugin-web-extension.aklinker1.io/
@@ -22,7 +23,16 @@ export default defineConfig({
 		webExtension({
 			disableAutoLaunch: true,
 			manifest: "manifest.json",
+			additionalInputs: ["assets"],
 			assets: "assets",
+		}),
+		viteStaticCopy({
+			targets: [
+				{
+					src: "assets/**/*",
+					dest: "assets",
+				},
+			],
 		}),
 	],
 });

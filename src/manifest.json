@@ -16,14 +16,26 @@
 		"extension_pages": "default-src 'self'"
 	},
 	"icons": {
-		"16": "assets/logo-16.png",
-		"48": "assets/logo-48.png",
-		"128": "assets/logo-128.png"
+		"16": "assets/notrack-magnet.svg",
+		"48": "assets/notrack-magnet.svg",
+		"64": "assets/notrack-magnet.svg",
+		"96": "assets/notrack-magnet.svg",
+		"128": "assets/notrack-magnet.svg"
 	},
 	"background": {
 		"scripts": [
 			"background.ts"
 		]
+	},
+	"action": {
+		"default_icon": {
+			"16": "assets/notrack-magnet.svg",
+			"48": "assets/notrack-magnet.svg",
+			"64": "assets/notrack-magnet.svg",
+			"96": "assets/notrack-magnet.svg",
+			"128": "assets/notrack-magnet.svg"
+		},
+		"default_title": "notrack-magnet"
 	},
 	"content_scripts": [
 		{
