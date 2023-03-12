@@ -6,24 +6,25 @@ import webExtension from "vite-plugin-web-extension";
 // https://vitejs.dev/config/
 // https://vite-plugin-web-extension.aklinker1.io/
 export default defineConfig({
-  root: "src",
-  build: {
-    outDir: path.resolve(__dirname, "dist"),
-    emptyOutDir: true,
-    sourcemap: !!process.env.SOURCEMAP,
-    rollupOptions: {
-        output: {
-            sanitizeFileName
-        }
-    }
-  },
-  plugins: [
-    vue(),
-    webExtension({
-      manifest: "src/manifest.json",
-      assets: "assets",
-    }),
-  ],
+	root: "src",
+	build: {
+		outDir: path.resolve(__dirname, "dist"),
+		emptyOutDir: true,
+		sourcemap: !!process.env.SOURCEMAP,
+		rollupOptions: {
+			output: {
+				sanitizeFileName,
+			},
+		},
+	},
+	plugins: [
+		vue(),
+		webExtension({
+			disableAutoLaunch: true,
+			manifest: "manifest.json",
+			assets: "assets",
+		}),
+	],
 });
 
 // Slightly modified sanitizer because we can't have `_` in the beginning of extension files
@@ -37,9 +38,12 @@ const DRIVE_LETTER_REGEX = /^[a-z]:/i;
 
 function sanitizeFileName(name: string): string {
 	const match = DRIVE_LETTER_REGEX.exec(name);
-	const driveLetter = match ? match[0] : '';
+	const driveLetter = match ? match[0] : "";
 
 	// A `:` is only allowed as part of a windows drive letter (ex: C:\foo)
 	// Otherwise, avoid them because they can refer to NTFS alternate data streams.
-	return driveLetter + name.substr(driveLetter.length).replace(INVALID_CHAR_REGEX, '');
+	return (
+		driveLetter +
+		name.substr(driveLetter.length).replace(INVALID_CHAR_REGEX, "")
+	);
 }

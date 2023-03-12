@@ -1,12 +1,23 @@
-import browser, { Runtime } from "webextension-polyfill";
+import browser, { Menus, Runtime, Tabs } from "webextension-polyfill";
 
-browser.runtime.onMessage.addListener(
-  (message: any, sender: Runtime.MessageSender) => {
-    // To view console logs in a background page on Chrome,
-    // you go to chrome://extensions/ and inspect views under your extension
-    console.log("Hello from background.js");
-    if (message.from) {
-      console.log("Message sent by: " + message.from);
-    }
-  }
-);
+const menuId = "notrack-magnet__removeTrackers";
+
+const onClick = (info: Menus.OnClickData, tab: Tabs.Tab) => {
+	browser.tabs.executeScript(tab.id, {
+		file: "/content-script.js",
+	});
+};
+
+browser.menus.create({
+	id: menuId,
+	title: "Remove magnet trackers on the page",
+	contexts: ["all"],
+});
+
+browser.menus.onClicked.addListener((info, tab) => {
+	switch (info.menuItemId) {
+		case menuId:
+			onClick(info, tab!);
+			break;
+	}
+});

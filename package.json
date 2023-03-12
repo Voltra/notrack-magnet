@@ -1,14 +1,16 @@
 {
-  "name": "vue3-typescript-web-extensions-template",
+  "name": "notrack-magnet",
   "version": "0.0.1",
   "description": "",
+  "type": "module",
   "scripts": {
     "dev": "cross-env SOURCEMAP=true vite build --watch",
     "build": "vite build",
     "test": "vitest"
   },
-  "author": "Thomas Chin",
-  "license": "ISC",
+  "author": "Voltra <ludwig.guerin.98@gmx.fr>",
+  "license": "MIT",
+  "private": true,
   "devDependencies": {
     "@types/webextension-polyfill": "^0.9.1",
     "@vitejs/plugin-vue": "^3.1.0",
@@ -19,7 +21,7 @@
     "sass": "^1.55.0",
     "typescript": "^4.8.4",
     "vite": "^3.1.4",
-    "vite-plugin-web-extension": "^1.4.4",
+    "vite-plugin-web-extension": "^3.0.0",
     "vitest": "^0.23.4",
     "vue": "^3.2.40",
     "webextension-polyfill": "^0.10.0"

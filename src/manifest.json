@@ -1,28 +1,38 @@
 {
-  "name": "Vue 3 Typescript Starter",
-  "version": "0.0.1",
-  "description": "Vue 3 Typescript Starter",
-  "manifest_version": 3,
-  "permissions": ["storage"],
-  "optional_host_permissions": ["*://*/*"],
-  "icons": {
-    "16": "assets/logo-16.png",
-    "48": "assets/logo-48.png",
-    "128": "assets/logo-128.png"
-  },
-  "background": {
-    "service_worker": "background.ts"
-  },
-  "action": {
-    "default_popup": "popup/index.html"
-  },
-  "options_ui": {
-    "page": "options/index.html"
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content-script.ts"]
-    }
-  ]
+	"name": "notrack-magnet",
+	"version": "0.0.1",
+	"description": "Remove trackers from magnet links",
+	"manifest_version": 3,
+	"permissions": [
+		"storage",
+		"activeTab",
+		"contextMenus",
+		"menus"
+	],
+	"optional_host_permissions": [
+		"*://*/*"
+	],
+	"content_security_policy": {
+		"extension_pages": "default-src 'self'"
+	},
+	"icons": {
+		"16": "assets/logo-16.png",
+		"48": "assets/logo-48.png",
+		"128": "assets/logo-128.png"
+	},
+	"background": {
+		"scripts": [
+			"background.ts"
+		]
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"<all_urls>"
+			],
+			"js": [
+				"content-script.ts"
+			]
+		}
+	]
 }
