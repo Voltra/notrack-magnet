@@ -1,2 +1,10 @@
-node_modules
-dist
+.vscode/
+.idea/
+node_modules/
+dist/
+web-ext-artifacts/
+.brackets.json
+.env
+*.log
+*.swp
+.DS_Store

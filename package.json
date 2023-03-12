@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "cross-env SOURCEMAP=true vite build --watch",
     "build": "vite build",
-    "test": "vitest"
+    "test": "vitest",
+	"webext:dev": "web-ext run -s dist --reload",
+	"webext:build": "web-ext build -s dist --overwrite-dest"
   },
   "author": "Voltra <ludwig.guerin.98@gmx.fr>",
   "license": "MIT",

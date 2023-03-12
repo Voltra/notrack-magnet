@@ -2,7 +2,7 @@ import browser, { Menus, Runtime, Tabs } from "webextension-polyfill";
 
 const menuId = "notrack-magnet__removeTrackers";
 
-const onClick = (tab: Tabs.Tab) => {
+const loadContentScriptIn = (tab: Tabs.Tab) => {
 	browser.tabs.executeScript(tab.id, {
 		file: "/content-script.js",
 	});
@@ -11,7 +11,7 @@ const onClick = (tab: Tabs.Tab) => {
 browser.menus.create({
 	id: menuId,
 	title: "Remove magnet trackers on the page",
-	contexts: ["all"],
+	contexts: ["page"],
 	icons: {
 		"16": "/assets/notrack-magnet.svg",
 		"48": "/assets/notrack-magnet.svg",
@@ -22,13 +22,11 @@ browser.menus.create({
 });
 
 browser.menus.onClicked.addListener((info, tab) => {
-	switch (info.menuItemId) {
-		case menuId:
-			onClick(tab!);
-			break;
+	if (info.menuItemId === menuId) {
+		loadContentScriptIn(tab!);
 	}
 });
 
 browser.action.onClicked.addListener(tab => {
-	onClick(tab);
+	loadContentScriptIn(tab);
 });

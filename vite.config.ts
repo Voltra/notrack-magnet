@@ -1,15 +1,17 @@
 import path from "node:path";
-import { defineConfig } from "vite";
+import { defineConfig, normalizePath } from "vite";
 import vue from "@vitejs/plugin-vue";
 import webExtension from "vite-plugin-web-extension";
 import { viteStaticCopy } from "vite-plugin-static-copy";
+
+const here = (uri = "") => normalizePath(path.resolve(__dirname, uri));
 
 // https://vitejs.dev/config/
 // https://vite-plugin-web-extension.aklinker1.io/
 export default defineConfig({
 	root: "src",
 	build: {
-		outDir: path.resolve(__dirname, "dist"),
+		outDir: here("dist"),
 		emptyOutDir: true,
 		sourcemap: !!process.env.SOURCEMAP,
 		rollupOptions: {
@@ -23,7 +25,6 @@ export default defineConfig({
 		webExtension({
 			disableAutoLaunch: true,
 			manifest: "manifest.json",
-			additionalInputs: ["assets"],
 			assets: "assets",
 		}),
 		viteStaticCopy({

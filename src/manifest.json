@@ -1,4 +1,5 @@
 {
+	"id": "notrack-magnet@ludwig-guerin.fr",
 	"name": "notrack-magnet",
 	"version": "0.0.1",
 	"description": "Remove trackers from magnet links",
@@ -46,5 +47,10 @@
 				"content-script.ts"
 			]
 		}
-	]
+	],
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "notrack-magnet@ludwig-guerin.fr"
+		}
+	}
 }
