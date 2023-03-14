@@ -1,14 +1,20 @@
 {
   "name": "notrack-magnet",
-  "version": "0.0.1",
-  "description": "",
+  "version": "1.0.0",
+  "description": "Remove trackers from magnet links ",
   "type": "module",
+  "keywords": [
+	"security",
+	"torrent"
+  ],
   "scripts": {
     "dev": "cross-env SOURCEMAP=true vite build --watch",
     "build": "vite build",
     "test": "vitest",
-	"webext:dev": "web-ext run -s dist --reload",
-	"webext:build": "web-ext build -s dist --overwrite-dest"
+    "webext:dev": "web-ext run -s dist --reload",
+    "webext:build": "web-ext build -s dist --overwrite-dest",
+    "webext:lint": "web-ext lint -s dist",
+	"webext:sign": "env-cmd -f ./.env -x web-ext sign --api-key=\\$AMO_JWT_ISSUER --api-secret=\\$AMO_JWT_SECRET -s dist"
   },
   "author": "Voltra <ludwig.guerin.98@gmx.fr>",
   "license": "MIT",
@@ -18,6 +24,7 @@
     "@vitejs/plugin-vue": "^3.1.0",
     "@vue/test-utils": "^2.1.0",
     "cross-env": "^7.0.3",
+    "env-cmd": "^10.1.0",
     "jsdom": "^20.0.1",
     "postcss": "8.4.17",
     "sass": "^1.55.0",

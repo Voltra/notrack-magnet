@@ -1,7 +1,7 @@
 {
 	"id": "notrack-magnet@ludwig-guerin.fr",
 	"name": "notrack-magnet",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"description": "Remove trackers from magnet links",
 	"manifest_version": 3,
 	"permissions": [
