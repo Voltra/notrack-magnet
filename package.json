@@ -1,6 +1,6 @@
 {
   "name": "notrack-magnet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Remove trackers from magnet links ",
   "type": "module",
   "keywords": [
