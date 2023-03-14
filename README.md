@@ -12,11 +12,3 @@ npm run webext:build # Package the WebExtension (using dist as the source direct
 ```
 
 After these commands, you will have the built (and minified) code inside the `dist` folder, as well as a zip of said code inside `web-ext-artifacts` (named `notrack-magnet-<manifest version>.zip`, e.g. `notrack-magnet-1.0.0.zip`).
-
-## Useful commands
-
-```bash
-npm run dev # Continuously rebuilds the extension from src into dist
-npm run webext:dev # Launches firefox with the extension enabled
-npm run build # Builds the extension from src into dist
-```
